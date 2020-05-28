@@ -1,1 +1,22 @@
-뉴욕 택시 
+# Kaggle - New York City Taxi Trip Duration
+> 캐글 - 뉴욕 택시 여행 기간 예측 EDA
+
+
+# 1. 대회 및 프로젝트 소개
+
+### (1) kaggle 대회
+
+- 목적: 뉴욕에서의 택시 여행 기간을 예측하는 모델을 만드는 것
+- 성과 측정치(RMSE)가 가장 좋았던 사람을 뽑는 것보다는 통찰력 있고 사용 가능한 모델을 만드는 사람에게 보상을 지불하는 형태로 진행되었다.
+    - pi : 예측값과 ai : 실제 값 의 차[cost function]를 제곱한 후 평균을 구해 루트를 씌어 주는 function
+    - 0에 가까운 값이 나올수록 정확도가 높은 값이다.
+
+https://www.kaggle.com/c/nyc-taxi-trip-duration
+
+
+### (2) 프로젝트 소개
+- 본격적인 모델링에 앞서, EDA를 통해 데이터에 대한 이해를 높이고자 한다.
+
+
+# 2. 프로젝트 결과
+[EDA_Project_Kaggle_-_New_York_Taxi_Trip_Duration.pdf](https://github.com/DS-Heejae/EDA-Project/files/4696535/EDA_Project_Kaggle_-_New_York_Taxi_Trip_Duration.pdf)
