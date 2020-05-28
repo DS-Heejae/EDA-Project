@@ -1,0 +1,642 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>EDA Project: Kaggle - New York Taxi Trip Duration</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b32224ed-f134-41f4-923e-f55d1d775c48" class="page sans"><header><img class="page-cover-image" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/nytaxis.jpeg" style="object-position:center 50%"/><h1 class="page-title">EDA Project: Kaggle - New York Taxi Trip Duration</h1><table class="properties"><tbody></tbody></table></header><div class="page-body"><nav id="eb6c1ed2-7c2a-4a72-aa59-072f74627b20" class="block-color-brown table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#971df916-a2fb-40ca-a3d4-158171449a0e">1. 대회 및 프로젝트 소개</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d458f8dd-dd99-490f-8fe8-dfe36c01b4ea">(1) kaggle 대회</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3d845a66-78e7-4fae-8c5c-ccf780d1dad9">(2) 프로젝트 목적</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2d8cd735-a20d-44de-bef3-bc7968ec373d">2. Data Preview</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e12cb5e1-ee96-402a-ad87-db6a17bebfd0">(1) 변수 설명</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#80beb49b-0135-44f8-a0fb-bf0bc1bc96a3">(2) 결측치: 없음</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd1f3f3e-2243-4720-bf95-66c344ec8e3c">(3) Target 변수(trip_duration) 최대값, 최소값</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0bfc91ce-7e93-4149-ac47-1a91dc937775">3. 가설 설정</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#da989c6f-83c6-47a8-a251-68be5769f1d4">4. EDA</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#322fd540-9745-4849-b4c3-6f5cb3736c88">(1) 택시 업체 사용 현황</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a711714d-b1e8-414d-80ae-c2413f179e5f">(2) 승객 수 분포</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c9d3f859-8b78-45c5-abb8-8896ed311c35">(3) store and fwd flag</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#3a6a8965-f25d-4e7d-a014-03d2486e9ad7">(4) 택시 탑승 후 이동 시간</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22205158-f72a-436b-90a9-9e91ff5d8473">5. 가설 검증</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fe5bbf4d-8286-4104-91a9-1bf15d750f55">6. 가설 검정 결과 정리</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#fe23b5f4-d25d-4a74-8060-306882ac1b7c"><strong>7. 프로젝트 회고</strong></a></div></nav><h1 id="971df916-a2fb-40ca-a3d4-158171449a0e" class="block-color-brown">1. 대회 및 프로젝트 소개</h1><h2 id="d458f8dd-dd99-490f-8fe8-dfe36c01b4ea" class="block-color-brown">(1) kaggle 대회</h2><ul id="3db03fd6-3de0-4469-8331-dc871575a9ff" class="bulleted-list"><li>목적: 뉴욕에서의 택시 여행 기간을 예측하는 모델을 만드는 것</li></ul><ul id="45e1bdb3-6d60-4642-98a2-338038333ecd" class="bulleted-list"><li>성과 측정치(RMSE)가 가장 좋았던 사람을 뽑는 것보다는 통찰력 있고 사용 가능한 모델을 만드는 사람에게 보상을 지불하는 형태로 진행되었다.<ul id="c648f9cb-7bdf-475a-8762-e00d97cbb925" class="bulleted-list"><li>pi : 예측값과 ai : 실제 값 의 차[cost function]를 제곱한 후 평균을 구해 루트를 씌어 주는 function</li></ul><ul id="a385695d-c5fb-4542-80e6-e242944537c3" class="bulleted-list"><li>0에 가까운 값이 나올수록 정확도가 높은 값이다.</li></ul><figure id="0c7b2037-9c1b-4a39-8402-1fd72667430b" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/image.png"><img style="width:781px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/image.png"/></a></figure></li></ul><h2 id="3d845a66-78e7-4fae-8c5c-ccf780d1dad9" class="block-color-brown">(2) 프로젝트 목적</h2><ul id="b2194426-cfe3-422d-b9a1-695cd65cb98c" class="bulleted-list"><li>본격적인 모델링에 앞서, EDA를 진행하며 train 데이터에 대한 이해를 높이고자 한다.</li></ul><p id="02541f73-ce90-4fbf-ba0d-9f40b0bb86b9" class="">
+</p><figure id="b9774a35-0f26-4cf9-93be-725cc9e0d80c"><a href="https://www.kaggle.com/c/nyc-taxi-trip-duration#description" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">New York City Taxi Trip Duration</div><div class="bookmark-description">Share code and data to improve ride time predictions</div></div><div class="bookmark-href"><img src="https://www.kaggle.com/static/images/favicon.ico" class="icon bookmark-icon"/>https://www.kaggle.com/c/nyc-taxi-trip-duration#description</div></div><img src="https://storage.googleapis.com/kaggle-competitions/kaggle/6960/logos/thumb76_76.png" class="bookmark-image"/></a></figure><h1 id="2d8cd735-a20d-44de-bef3-bc7968ec373d" class="block-color-brown">2. Data Preview</h1><h3 id="e12cb5e1-ee96-402a-ad87-db6a17bebfd0" class="block-color-brown">(1) 변수 설명</h3><ul id="51e48d73-6092-4979-a9c3-fca0c29b4574" class="bulleted-list"><li>id: trip 별 고유 id</li></ul><ul id="c5169f7c-0962-4ca2-b97e-70b17a3605d0" class="bulleted-list"><li>vendor_id: 택시 업체</li></ul><ul id="f501b38d-096c-4178-9210-58d7bab6abd3" class="bulleted-list"><li>pickup_datetime, dropoff_datetime: 승하차 일자(2016년 1~6월), 시간(시·분·초)</li></ul><ul id="1d3d8dea-4a55-45f2-9b8d-11210d499d62" class="bulleted-list"><li>passenger_count: 택시 탑승객 수</li></ul><ul id="b810bce0-7f05-488f-971b-0d6b3e4ea3b5" class="bulleted-list"><li>pickup_latitude, pickup_longitude: 탑승 위·경도</li></ul><ul id="cb3b9c2b-b67c-41d7-842f-4049d6e48402" class="bulleted-list"><li>dropoff_latitude, dropoff_longitude: 하차 위·경도</li></ul><ul id="b30abbf8-9608-482c-8b55-47234b119607" class="bulleted-list"><li>store_and_fwd_flag: 탑승객의 이전 탑승 기록 저장 여부</li></ul><ul id="a5a6efb3-6294-46e1-8688-ec9015a016b7" class="bulleted-list"><li>trip_duration : 이동 시간(초)</li></ul><p id="84a5d441-cfa3-4eb4-a783-93f21284aded" class="">
+</p><h3 id="80beb49b-0135-44f8-a0fb-bf0bc1bc96a3" class="block-color-brown">(2) 결측치: 없음</h3><figure id="513b3fa8-c84b-4f05-a5ee-c891444efd1e" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-27__10.52.43.png"><img style="width:528px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-27__10.52.43.png"/></a></figure><h3 id="bd1f3f3e-2243-4720-bf95-66c344ec8e3c" class="block-color-brown">(3) Target 변수(trip_duration) 최대값, 최소값</h3><figure id="b62e7463-2349-4348-849f-ae54ea0c758f" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-27__10.53.46.png"><img style="width:1720px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-27__10.53.46.png"/></a></figure><h1 id="0bfc91ce-7e93-4149-ac47-1a91dc937775" class="block-color-brown">3. 가설 설정</h1><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="059ec8e4-210f-4e1f-b22f-63b13f6e19be"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>1) 겨울, 주말에 택시를 많이 이용할 것이다.</strong></div></figure><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="8347eb85-45a7-4566-a675-597e6d76c96c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>2) 퇴근 시간 대에 택시를 많이 이용할 것이다.</strong></div></figure><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="c6447c59-f20a-45fd-ad0b-a7dabf5113e7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>3) 승객수가 많을수록 특정 포인트에서 많이 탈것이다.</strong></div></figure><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="0585b2ee-9cbb-4a5c-9faa-5c18be17e3f7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>4) 날씨가 안좋으면 택시를 많이 이용할 것이다.</strong></div></figure><h1 id="da989c6f-83c6-47a8-a251-68be5769f1d4" class="block-color-brown">4. EDA</h1><h3 id="322fd540-9745-4849-b4c3-6f5cb3736c88" class="block-color-brown">(1) 택시 업체 사용 현황</h3><ul id="8b0792c8-ff57-46f0-95bf-51f4e92fa6de" class="bulleted-list"><li>vender 1보다 2의 운행 차량이 더 많음을 알 수 있다.</li></ul><figure id="f219b859-2eb5-40d8-8610-46b72dfe28bb" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.02.40.png"><img style="width:672px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.02.40.png"/></a></figure><h2 id="a711714d-b1e8-414d-80ae-c2413f179e5f" class="block-color-brown">(2) 승객 수 분포</h2><ul id="0f486751-5cbf-4608-962d-199ed84c4df1" class="bulleted-list"><li>혼자 택시에 탑승하는 승객이 압도적으로 많음을 알 수 있다.</li></ul><figure id="676558e4-3d3f-498f-8629-b3f408a02c57" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__9.14.31.png"><img style="width:720px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__9.14.31.png"/></a></figure><h3 id="c9d3f859-8b78-45c5-abb8-8896ed311c35" class="block-color-brown">(3) store and fwd flag</h3><figure id="00e9c5d1-6aa2-432d-b2d5-ee691dabbffc" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__9.16.29.png"><img style="width:1586px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__9.16.29.png"/></a></figure><h3 id="3a6a8965-f25d-4e7d-a014-03d2486e9ad7" class="block-color-brown">(4) 택시 탑승 후 이동 시간</h3><ul id="6872feb3-4512-4f96-844b-5cbd46132555" class="bulleted-list"><li>택시 탑승 후 4~10분 정도 이동하는 경우가 가장 많으며, 오른쪽 꼬리 분포의 형태를 나타낸다.</li></ul><figure id="29733c7d-a315-4629-a2e6-789306bb4a97" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.03.12.png"><img style="width:672px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.03.12.png"/></a></figure><ul id="bfd831e8-5739-43fd-a085-27c69a2a1257" class="bulleted-list"><li>log 변환으로 정규화된 그래프 모형 확인</li></ul><figure id="b95c7aa8-b2d2-4156-94d9-48bae0ae4f63" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.03.39.png"><img style="width:1680px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.03.39.png"/></a></figure><p id="e1dce507-2288-4522-9ead-dd0a5629fe99" class="">
+</p><h1 id="22205158-f72a-436b-90a9-9e91ff5d8473" class="block-color-brown">5. 가설 검증</h1><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="9fde01fa-d09d-44dc-b058-cc680577176a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>1) 겨울, 주말에 택시를 많이 이용할 것이다. → False</strong></div></figure><ul id="1f268496-19df-4179-ab2d-ce53ad009720" class="bulleted-list"><li>월별, 요일별 택시 pick up 횟수 확인 결과, 겨울(1-2월) 보다는 3-4월에 이용 빈도가 높다.</li></ul><figure id="6eaec8d5-4497-4d34-ba0f-2a8785d551c9" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.13.53.png"><img style="width:672px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.13.53.png"/></a></figure><figure id="f6f7e9f7-24ad-47a6-a73a-680357791656" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.14.01.png"><img style="width:672px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.14.01.png"/></a></figure><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="cf1eb267-bbcd-4468-b821-63e6b9dba059"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>2) 퇴근 시간 대에 택시를 많이 이용할 것이다. →True </strong></div></figure><ul id="57f37720-915f-4866-9805-3d1463395ee8" class="bulleted-list"><li>시간대 별 택시 pick up 수가 18시~20시 사이에 가장 많다.</li></ul><p id="54f5a64c-ce44-4df7-b2ce-9d96e8a5e0be" class="">
+</p><figure id="4082a5bd-68ec-4059-97dc-4762e46aaff1" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.15.28.png"><img style="width:1674px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.15.28.png"/></a></figure><ul id="15fd7ef4-12b8-431b-bd6b-3b522287dfcf" class="bulleted-list"><li>시간대 별 택시 평균 이동 속도: <ul id="67b71cc3-ad66-49c0-8a54-bcba4dc28751" class="bulleted-list"><li>점심시간(12~14시), 퇴근 시간(18~20)에 이동 속도가 가장 느린 것으로 보아, 이 시간 대에 교통 혼잡이 많이 일어남을 알 수 있다.</li></ul></li></ul><figure id="7358b2e8-9915-4dd7-a086-2771c747ac26" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.16.07.png"><img style="width:1664px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.16.07.png"/></a></figure><p id="49032f53-71c6-4df6-ae76-83c92fbea304" class="">
+</p><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="aebcb83a-55fe-4b36-b389-5d4d277ea6ab"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>3) 승객수가 많을수록 특정 포인트에서 많이 탈것이다. →False</strong></div></figure><ul id="8a602de7-0b8e-4f90-ac04-f51c13b5d95b" class="bulleted-list"><li>승객수는 크게 영향을 주지 않는 것으로 보이며. 택시 탑승 위치는 뉴욕 맨하탄이 가장 많다.</li></ul><div id="0dcf617d-421c-4319-8491-e71d49dda205" class="column-list"><div id="d18a74fa-c45a-4c75-aba7-5b4a28f05218" style="width:81.25%" class="column"><figure id="9bc657d1-3f5f-4dce-9654-883a6bacedbc" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.18.02.png"><img style="width:576px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.18.02.png"/></a></figure><p id="74d22c30-ad71-4959-9871-86044972270f" class="">
+</p></div><div id="a8263745-5089-4761-9be9-4b1e0fbcf620" style="width:18.75%" class="column"><pre id="956bbbee-ea13-41ce-9d0e-ef3e77deab12" class="code"><code># 구역별 승객수
+0    399153
+1    209427
+2     24956
+3    438330
+4     20831
+5    201535
+6     40259
+7     94406</code></pre><p id="a1181594-aea8-4110-afcb-67a611cf59f1" class="">
+</p></div></div><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="ddb23089-b543-421d-a46d-1b051bc7e4cd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">(<strong>4) 날씨가 안좋으면 택시를 많이 이용할 것이다.</strong></div></figure><p id="ad031f5a-ab0b-4512-a919-f761d609eb25" class="">→ 200개 샘플링 결과, 날씨는 크게 상관 관계를 발견하지 못하였다.</p><ul id="d377231f-cb5b-40ac-9454-02257b45072d" class="bulleted-list"><li>Darksky API에서 택시 탑승 시점의 날씨 데이터를 가져온 결과, 아래와 같이 분류되고 있다.<ul id="e23e66dd-b401-4b8e-8a9b-a89b38b8e6e1" class="bulleted-list"><li>array([&#x27;Clear&#x27;, &#x27;Overcast&#x27;, &#x27;Possible Drizzle&#x27;, &#x27;Partly Cloudy&#x27;,
+       &#x27;Mostly Cloudy&#x27;, &#x27;Light Rain&#x27;, &#x27;Drizzle&#x27;, &#x27;Possible Light Rain&#x27;,
+       &#x27;Possible Flurries&#x27;, &#x27;Foggy&#x27;], dtype=object)</li></ul></li></ul><ul id="8579822a-0767-4ae8-adae-31864076edd5" class="bulleted-list"><li>날씨 변수와 이동 시간 변수 간의 상관 계수<ul id="c8689f53-5653-4b8c-82f9-153f08d4f039" class="bulleted-list"><li>날씨 데이터는 One Hot Encoding 적용 하여 흐림(0), 맑음(1)으로 분류
+( 0 : Clear, Partly Cloudy // 1: Overcast, Lightsnow, Possible Drizzle, Light Rain)</li></ul><ul id="ad78f759-fe38-48a1-b2a9-50e5741f9805" class="bulleted-list"><li>상관 계수: 0.02로 두 변수 간 선형 상관 관계가 매우 낮은 것으로 보인다. <figure id="eae6a658-acc7-48c9-b098-f2b947576eeb" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__9.27.23.png"><img style="width:288px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__9.27.23.png"/></a></figure></li></ul></li></ul><ul id="4bf43304-c28a-4113-a08d-b2ab41ab02cf" class="bulleted-list"><li>날씨에 따른 탑승 시각과 이동 시간의 분포: 플롯 상으로도 특별히 상관 관계가 없어 보인다.</li></ul><figure id="392c7dc0-e5f0-44fc-9b09-c4778e83d98e" class="image"><a href="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.21.38.png"><img style="width:528px" src="EDA%20Project%20Kaggle%20New%20York%20Taxi%20Trip%20Duration%200c7b20379c1b4a3984021fd72667430b/_2020-05-28__8.21.38.png"/></a></figure><h1 id="fe5bbf4d-8286-4104-91a9-1bf15d750f55" class="block-color-brown">6. 가설 검정 결과 정리</h1><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="c7aa1f8c-47fb-43d0-842b-6b24ac6db30c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>가설 1. 겨울, 주말에 택시를 많이 이용할 것이다.</strong></div></figure><ul id="0e696829-048a-4681-813e-96623c557edd" class="bulleted-list"><li><strong> 결과:  월별, 요일별 택시 pick up 횟수 확인 결과, 겨울(1-2월) 보다는 3-4월에 이용 빈도가 높음을 확인.</strong></li></ul><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="d76ace36-56da-4fa0-ac3f-d4d7d2fd7506"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>가설 2. 퇴근 시간 대에 택시를 많이 이용할 것이다.</strong></div></figure><ul id="c540b620-af7e-4558-80a5-9a7584aa8c64" class="bulleted-list"><li><strong>결과: 택시 pick up 수가 18시~20시에 가장 많고, 동일 시간 대에 택시의 평균 속도가 가장 느림.</strong></li></ul><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2697ca78-74b0-4fd0-b6e1-79db3c33fbbd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>가설 3. 승객수가 많을수록 특정 포인트에서 많이 탈것이다.</strong></div></figure><ul id="8e887f75-9a04-48b0-b756-94f3359732e0" class="bulleted-list"><li><strong>결과: 승객수는 크게 영향을 주지 않고, 택시 탑승 위치는 뉴욕 맨하탄에서 가장 많은 것으로 확인.</strong></li></ul><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="5be52984-9017-4a03-b711-b54850d6508b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>가설 4. 날씨가 안좋으면 택시를 많이 이용할 것이다.</strong></div></figure><ul id="91580b83-f69f-4d64-8234-9262591950fa" class="bulleted-list"><li><strong>결과: 200개 샘플링 결과, 날씨는 크게 상관 관계를 발견하지 못하였다.</strong></li></ul><ul id="6992a684-ca77-4dd0-a33f-58e243b3d78f" class="bulleted-list"><li><strong>dark sky 하루 이용 건수(1000건) 제한으로, 날씨 데이터를 전부 다 가져오기에 한계가 있어서 200개로 샘플링하여 확인하였다. 샘플링에 따라 결과가 달라진다.</strong></li></ul><p id="f00080c0-381b-44f8-9afd-bc77dad81999" class="">
+</p><h1 id="fe23b5f4-d25d-4a74-8060-306882ac1b7c" class="block-color-brown"><strong>7. 프로젝트 회고</strong></h1><p id="68395deb-5b08-445a-8f32-2768da466838" class=""><strong>(1) Dark sky API 하루 이용 건수가 1000개로 제한되어 있어, 모든 날씨 데이터를 가져오는 데 한계가 있었다. </strong></p><p id="0e0e35d3-1bde-423a-bf37-0f8a97d19da1" class=""><strong>(2) 지도 상에 시간대 별 이동 경로를 표시하는 시각화 기법도 시도해보면 좋을 것 같다.</strong></p><p id="60108d41-78b2-4c69-9802-0d46adcc2ece" class=""><strong>(3) 군집 분석 대신, 승객과 승하차 포인트를 세분화할 필요가 있을 것 같다.</strong></p><p id="c6604c9e-097b-4f39-80b3-2d203f5a499e" class=""><strong>(4) 공휴일과 주말을 구분해서 분석이 필요할 것으로 생각된다.</strong></p><p id="74b234dd-abc6-4c8f-901a-1e5928d9e81d" class=""><strong>(5) 승객 수 별 tip duration 또한 심층 분석이 필요할 것 같다.</strong></p><p id="0f21dfbd-0265-4c26-934a-5070b23bf611" class="">
+</p></div></article></body></html>
