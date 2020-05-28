@@ -10,10 +10,11 @@
 
 - 목적: 뉴욕에서의 택시 여행 기간을 예측하는 모델을 만드는 것
 - 성과 측정치(RMSE)가 가장 좋았던 사람을 뽑는 것보다는 통찰력 있고 사용 가능한 모델을 만드는 사람에게 보상을 지불하는 형태로 진행되었다.
-- 대회 링크(https://www.kaggle.com/c/nyc-taxi-trip-duration)
+- [대회 바로가기](https://www.kaggle.com/c/nyc-taxi-trip-duration)
 
 ### (2) 프로젝트 소개
 - 본격적인 모델링에 앞서, EDA를 통해 데이터에 대한 이해를 높이고, 가설 설정 및 가설의 타당성을 평가하기 위해 본 프로젝트를 수행하였다.
 
-# 2. 프로젝트 결과: 아래 pdf에서 확인하실 수 있습니다.
+# 2. 프로젝트 결과
+- 아래 pdf에서 확인하실 수 있습니다.
 [EDA_Project_Kaggle_-_New_York_Taxi_Trip_Duration.pdf](https://github.com/DS-Heejae/EDA-Project/files/4696535/EDA_Project_Kaggle_-_New_York_Taxi_Trip_Duration.pdf)
