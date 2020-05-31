@@ -16,4 +16,4 @@
 
 # 2. 프로젝트 결과
 - 아래 pdf에서 확인하실 수 있습니다.
-
+- [회귀분석프로젝트 ](https://github.com/DS-Heejae/linear-regression-project-dacon/files/4707313/default.pdf)
