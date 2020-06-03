@@ -18,4 +18,4 @@
 
 # 2. 프로젝트 결과
 - 아래 pdf에서 확인하실 수 있습니다.
-[EDA프로젝트.pdf](https://github.com/DS-Heejae/EDA-Project/files/4724035/EDA.pdf)
+[EDA프로젝트.pdf](https://github.com/DS-Heejae/EDA-Project/files/4724795/EDA.pdf)
