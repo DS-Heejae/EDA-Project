@@ -1,6 +1,6 @@
 # Kaggle - New York City Taxi Trip Duration
-> 캐글 - 뉴욕 택시 여행 기간 예측 EDA,
-> 팀원: 안효준, 이희재
+> 캐글 - 뉴욕 택시 여행 기간 예측 EDA
+- 팀원: 안효준, 이희재
 
 <img width="966" alt="스크린샷 2020-05-29 오전 12 24 11" src="https://user-images.githubusercontent.com/60166667/83160895-b97b4b00-a142-11ea-8868-463da16cd42e.png">
 
